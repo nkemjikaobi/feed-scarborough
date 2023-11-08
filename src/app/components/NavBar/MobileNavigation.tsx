@@ -85,7 +85,7 @@ export const DesktopNavV2 = [
 	{
 		id: 4,
 		name: 'Volunteer today',
-		route: '#',
+		route: '/volunteer',
 	},
 	{
 		id: 5,
