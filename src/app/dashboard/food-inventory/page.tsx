@@ -21,6 +21,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { v4 as uuidv4 } from 'uuid';
 import { QRCodeCanvas } from 'qrcode.react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import moment from 'moment';
 
 export default function FoodInventory() {
 	const [loading, setLoading] = useState<boolean>(true);
@@ -434,7 +435,10 @@ export default function FoodInventory() {
 				{
 					id: data.length + 1,
 					name: itemName,
-					expiry: changeDateFormat(new Date(), 'MMMM Do YYYY, h:mm:ss a'),
+					expiry: moment(
+						departureDate,
+						'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ'
+					).fromNow(),
 					quantity: 1,
 					category: 'veggies',
 					unit: 'aisle-25',
@@ -466,12 +470,14 @@ export default function FoodInventory() {
 
 	const handleSubmit = async (values: Values) => {
 		setShowInventoryModal(false);
-		console.log(values);
 		setData([
 			{
 				...values,
 				id: data.length + 1,
-				expiry: changeDateFormat(departureDate, 'MMMM Do YYYY, h:mm:ss a'),
+				expiry: moment(
+					departureDate,
+					'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ'
+				).fromNow(),
 				actions: (
 					<div className='flex items-center space-x-4'>
 						<AiFillEdit
