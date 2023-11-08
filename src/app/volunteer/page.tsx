@@ -24,10 +24,10 @@ export default function Login() {
 	};
 
 	interface Values {
-		name: '';
-		email: '';
-		phone: '';
-		availability: '';
+		name: string;
+		email: string;
+		phone: string;
+		availability: string;
 	}
 
 	const LoginSchema = yup.object().shape({
@@ -152,12 +152,11 @@ export default function Login() {
 												container='tablet:px-6'
 												inputClassName='placeholder:text-14 placeholder:text-jobanaut-ink-blue-500 border-black'
 												name='availability'
-												placeholder='Enter Your Availablity(comma separated)'
+												placeholder='Enter Your Availablity (comma separated)'
 												type='text'
 											/>
 										</div>
 									</div>
-
 								</div>
 								<div className='flex flex-col justify-center items-center mt-[40px]'>
 									<CustomButton
