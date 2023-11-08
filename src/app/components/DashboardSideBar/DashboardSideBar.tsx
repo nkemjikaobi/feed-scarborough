@@ -13,7 +13,7 @@ import {
 } from 'react-icons/md';
 import { AiOutlineHome } from 'react-icons/ai';
 
-const DashboardSideBar = () => {
+const DashboardSideBar = ({ setShowSidebar }: any) => {
 	const pathname = usePathname();
 	const router = useRouter();
 
@@ -59,6 +59,7 @@ const DashboardSideBar = () => {
 						}`}
 						href={data.route}
 						key={data.id}
+						onClick={() => setShowSidebar(false)}
 					>
 						<span className=''>{data.icon}</span>
 						<p className=' font-medium ml-4'>{data.name}</p>

@@ -21,7 +21,7 @@ const StatisticsCard = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 bigLaptop:grid-cols-4 television:grid-cols-5 mt-6 gap-4">
+    <div className="grid grid-cols-1 tablet:grid-cols-2 bigLaptop:grid-cols-4 television:grid-cols-5 mt-6 gap-4">
       {false
         ? range(3).map((data, index) => (
             <div
@@ -34,7 +34,7 @@ const StatisticsCard = () => {
           ))
         : statisticsData.map((data) => (
             <div
-              className="flex flex-col relative p-6 bg-white shadow-lg w-[257px] h-[152px] rounded-2xl"
+              className="flex flex-col relative p-6 bg-white shadow-lg w-full tablet:w-[257px] h-[152px] rounded-2xl"
               key={data.id}
             >
               <h3 className="text-career-gray-200 font-medium text-14">

@@ -407,7 +407,7 @@ export default function FoodInventory() {
 	return (
 		<>
 			<main className=''>
-				<div className='flex items-center justify-between'>
+				<div className='flex justify-between'>
 					<h2 className='text-2xl font-bold mb-8'>Food Inventory</h2>
 					<CustomButton
 						customClass='font-medium bg-citiBlue-400 !bg-[#1686C1] !text-white !border-[#1686C1]'
