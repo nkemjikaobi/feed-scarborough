@@ -35,7 +35,7 @@ const DesktopNavigation = () => {
 								width={100}
 							/>
 						</Link>
-						<h2 className='ml-4 smallLaptop:text-2xl'>Feed Toronto</h2>
+						<h2 className='ml-4 smallLaptop:text-2xl'>FoodBank Local</h2>
 					</div>
 
 					<div

@@ -12,8 +12,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-	title: 'Feed Toronto',
-	description: 'Feed Toronto',
+	title: 'Food Bank Local',
+	description: 'Food Bank Local',
 };
 
 export default function RootLayout({
