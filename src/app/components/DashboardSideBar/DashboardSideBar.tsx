@@ -55,7 +55,7 @@ const DashboardSideBar = () => {
 						className={`flex items-center mb-6 py-3 rounded-lg  ${
 							pathname === data.route
 								? 'bg-blue-500 text-white px-4'
-								: 'text-gray-400 hover:text-feed-blue'
+								: 'text-gray-400 hover:text-feed-blue px-4'
 						}`}
 						href={data.route}
 						key={data.id}

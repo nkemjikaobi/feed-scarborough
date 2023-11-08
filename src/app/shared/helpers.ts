@@ -64,3 +64,18 @@ export const errorMessages = {
 	positiveInteger: 'The number must be greater than 0',
 	integer: 'No decimals allowed',
 };
+
+/**
+ * Compose a number of styles together easily
+ * @param {String} styles Classes/styles to be applied
+ * @return {String} Combined classes
+ */
+export const composeClasses = (...styles: any[]): string => {
+  let classes = ''
+
+  styles.forEach((arg) => {
+    if (arg) classes += `${arg} `
+  })
+
+  return classes.trim()
+}

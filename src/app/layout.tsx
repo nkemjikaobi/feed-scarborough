@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Roboto } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 
-const inter = Inter({ subsets: ['latin'] });
+
+const roboto = Roboto({
+	subsets: ['latin'],
+	display: 'swap',
+	weight: '400',
+});
 
 export const metadata: Metadata = {
 	title: 'Feed Toronto',
@@ -18,7 +23,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>
+			<body className={roboto.className}>
 				{' '}
 				<NextTopLoader color='#1686C1' />
 				<Toaster

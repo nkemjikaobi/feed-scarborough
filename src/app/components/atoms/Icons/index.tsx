@@ -30,13 +30,5 @@ const Icon = (props: IconProps) => {
     return null;
   }
 };
-Icon.defaultProps = {
-  name: "",
-  className: "",
-  onClick: () => {
-    return null;
-  },
-  foldername: "",
-  fill: "",
-};
+
 export default Icon;
