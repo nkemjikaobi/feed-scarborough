@@ -5,7 +5,11 @@ import CustomModal from '@/app/components/atoms/CustomModal/CustomModal';
 import EnhancedTable from '@/app/components/atoms/CustomTable';
 import FormikCustomInput from '@/app/components/atoms/FormikCustomInput/FormikCustomInput';
 import FormikCustomSelect from '@/app/components/atoms/FormikCustomSelect/FormikCustomSelect';
-import { ButtonProperties, changeDateFormat, errorMessages } from '@/app/shared/helpers';
+import {
+	ButtonProperties,
+	changeDateFormat,
+	errorMessages,
+} from '@/app/shared/helpers';
 import { Form, Formik, FormikProps } from 'formik';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -15,6 +19,8 @@ import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { v4 as uuidv4 } from 'uuid';
+import { QRCodeCanvas } from 'qrcode.react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export default function FoodInventory() {
 	const [loading, setLoading] = useState<boolean>(true);
@@ -23,12 +29,24 @@ export default function FoodInventory() {
 		useState<boolean>(false);
 	const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
 	const [departureDate, setDepartureDate] = useState<Date | undefined>();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
+	const router = useRouter();
+	const itemName = searchParams.get('item');
 
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(false);
 		}, 3000);
 	}, []);
+
+	useEffect(() => {
+		if (itemName) {
+			autoAddFoodToInventory();
+		}
+
+		//eslint-disable-next-line
+	}, [itemName]);
 
 	const inventoryColums = [
 		{
@@ -380,7 +398,7 @@ export default function FoodInventory() {
 	const [data, setData] = useState<any>(inventoryData);
 
 	const initialState = {
-		name: '',
+		name: itemName || '',
 		quantity: '',
 		unit: '',
 		category: '',
@@ -410,9 +428,43 @@ export default function FoodInventory() {
 		expiry: yup.string(),
 	});
 
+	const autoAddFoodToInventory = () => {
+		setData([
+			{
+				id: data.length + 1,
+				name: itemName,
+				expiry: changeDateFormat(new Date(), 'MMMM Do YYYY, h:mm:ss a'),
+				quantity: 1,
+				category: 'veggies',
+				unit: 'aisle-25',
+				actions: (
+					<div className='flex items-center space-x-4'>
+						<AiFillEdit
+							className='cursor-pointer text-20 text-feed-blue'
+							onClick={(e: any) => {
+								e.stopPropagation();
+								setShowUpdateInventoryModal(true);
+							}}
+						/>
+						<AiFillDelete
+							className='text-20 text-red-500 cursor-pointer'
+							onClick={(e: any) => {
+								e.stopPropagation();
+								setShowDeleteModal(true);
+							}}
+						/>
+					</div>
+				),
+			},
+			...data,
+		]);
+		router.push('/dashboard/food-inventory');
+		toast.success(`${itemName} has been added to the inventory`);
+	};
+
 	const handleSubmit = async (values: Values) => {
 		setShowInventoryModal(false);
-		console.log(values)
+		console.log(values);
 		setData([
 			{
 				...values,
@@ -475,6 +527,33 @@ export default function FoodInventory() {
 					searchPlaceholder={'Filter inventory by any thing'}
 					searchWrapper='!m-[1rem]'
 				/>
+				<div className='mt-16'>
+					<h2 className='text-xl mb-6 font-bold underline'>
+						Scan Items below for faster addition to records
+					</h2>
+					<div className='grid grid-cols-2 smallLaptop:grid-cols-4 bigLaptop:grid-cols-6'>
+						<div>
+							<h4 className='mb-2 font-medium'>Rice</h4>
+							<QRCodeCanvas value='/dashboard/food-inventory?item=rice' />
+						</div>
+						<div>
+							<h4 className='mb-2 font-medium'>Noodles</h4>
+							<QRCodeCanvas value='/dashboard/food-inventory?item=noodles' />
+						</div>
+						<div>
+							<h4 className='mb-2 font-medium'>Onions</h4>
+							<QRCodeCanvas value='/dashboard/food-inventory?item=onions' />
+						</div>
+						<div>
+							<h4 className='mb-2 font-medium'>Yoghurt</h4>
+							<QRCodeCanvas value='/dashboard/food-inventory?item=yoghurt' />
+						</div>
+						<div>
+							<h4 className='mb-2 font-medium'>Chicken</h4>
+							<QRCodeCanvas value='/dashboard/food-inventory?item=chicken' />
+						</div>
+					</div>
+				</div>
 			</main>
 			<CustomModal
 				callBack={() => {}}
