@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,17 +21,29 @@ export default function RootLayout({
 			<body className={inter.className}>
 				{' '}
 				<NextTopLoader color='#1686C1' />
-				<ToastContainer
-					autoClose={5000}
-					closeOnClick
-					draggable
-					hideProgressBar={false}
-					newestOnTop={false}
-					pauseOnFocusLoss
-					pauseOnHover
+				<Toaster
+					toastOptions={{
+						duration: 5000,
+						style: {
+							marginTop: '80px',
+							borderRadius: '6px',
+							fontSize: '14px',
+							height: '50px',
+						},
+						error: {
+							style: {
+								background: '#FFE4E4',
+								color: '#B61E1E',
+							},
+						},
+						success: {
+							style: {
+								background: '#E4FFE7',
+								color: '#1EB62D',
+							},
+						},
+					}}
 					position='top-right'
-					rtl={false}
-					theme='dark'
 				/>
 				{children}
 			</body>

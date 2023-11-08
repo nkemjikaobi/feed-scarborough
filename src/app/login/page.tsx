@@ -59,18 +59,6 @@ export default function Login() {
 					<h2 className='text-xl smallLaptop:text-3xl font-bold text-center my-8'>
 						Login to manage your Food Bank
 					</h2>
-					{/* <ToastContainer
-						autoClose={5000}
-						closeOnClick
-						draggable
-						hideProgressBar={false}
-						newestOnTop={false}
-						pauseOnFocusLoss
-						pauseOnHover
-						position='top-right'
-						rtl={false}
-						theme='dark'
-					/> */}
 					<Formik
 						enableReinitialize
 						initialValues={initialState}
