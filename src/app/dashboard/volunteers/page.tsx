@@ -1,10 +1,18 @@
 'use client';
 
 import EnhancedTable from '@/app/components/atoms/CustomTable';
+import { useEffect, useState } from 'react';
 import { AiFillDelete, AiOutlineMail } from 'react-icons/ai';
 import { IoMdCall } from 'react-icons/io';
 
 export default function Volunteers() {
+	const [loading, setLoading] = useState<boolean>(true);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+		}, 3000);
+	}, []);
 	const volunteerColums = [
 		{
 			id: 11,
@@ -352,7 +360,7 @@ export default function Volunteers() {
 			<h2 className='text-2xl font-bold mb-8'>Volunteers</h2>
 			<EnhancedTable
 				minWidth={1000}
-				loading={false}
+				loading={loading}
 				headers={volunteerColums}
 				rows={volunteerData}
 				options={{

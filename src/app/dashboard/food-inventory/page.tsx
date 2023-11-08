@@ -1,9 +1,17 @@
 'use client';
 
 import EnhancedTable from '@/app/components/atoms/CustomTable';
+import { useEffect, useState } from 'react';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 
 export default function FoodInventory() {
+	const [loading, setLoading] = useState<boolean>(true);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setLoading(false);
+		}, 3000);
+	}, []);
 	const inventoryColums = [
 		{
 			id: 11,
@@ -336,7 +344,7 @@ export default function FoodInventory() {
 			<h2 className='text-2xl font-bold mb-8'>Food Inventory</h2>
 			<EnhancedTable
 				minWidth={1000}
-				loading={false}
+				loading={loading}
 				headers={inventoryColums}
 				rows={inventoryData}
 				options={{
