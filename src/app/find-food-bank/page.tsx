@@ -9,10 +9,10 @@ import { FaWheelchair } from 'react-icons/fa';
 import { range } from 'lodash';
 import DesktopNavigation from '../components/NavBar/DesktopNavigation';
 
-export default function Home() {
+export default function FindFoodBank() {
 	const [activeFoodBank, setActiveFoodBank] = useState<number>(-1);
 	const [searchText, setSearchText] = useState<string>('');
-	const [loading, setLoading] = useState<boolean>(false);
+	const [loading, setLoading] = useState<boolean>(true);
 	const [filters, setFilters] = useState({
 		nearby: false,
 		nearby2: false,

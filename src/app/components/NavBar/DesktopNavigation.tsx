@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { DesktopNavV2 } from './MobileNavigation';
+import CustomButton from '../atoms/CustomButton/CustomButton';
+import { ButtonProperties } from '@/app/shared/helpers';
 
 const DesktopNavigation = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -45,7 +48,7 @@ const DesktopNavigation = () => {
 						</div>
 					</div>
 				</div>
-				<div className={`px-4 pt-4 mt-1 flex space-x-8`} ref={node}>
+				<div className={`px-4 pt-4 mt-1 flex items-center space-x-8`} ref={node}>
 					{DesktopNavV2.map(data => (
 						<Link href={data.route} key={data.id}>
 							<div
@@ -62,31 +65,3 @@ const DesktopNavigation = () => {
 };
 
 export default DesktopNavigation;
-
-export const DesktopNavV2 = [
-	{
-		id: 1,
-		name: 'Find a food bank',
-		route: '/find-food-bank',
-	},
-	{
-		id: 2,
-		name: 'Food Availability',
-		route: '/find-food-bank',
-	},
-	{
-		id: 3,
-		name: 'Events & Calendars',
-		route: '#',
-	},
-	{
-		id: 4,
-		name: 'Volunteer today',
-		route: '#',
-	},
-	{
-		id: 5,
-		name: 'Donate',
-		route: '#',
-	},
-];

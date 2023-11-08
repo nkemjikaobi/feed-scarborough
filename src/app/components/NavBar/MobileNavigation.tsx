@@ -52,7 +52,11 @@ const MobileNavigation = () => {
 			>
 				{DesktopNavV2.map(data => (
 					<Link href={data.route} key={data.id}>
-						<div className={`pr-2 mb-6 cursor-pointer `}>{data.name}</div>
+						<div
+							className={`pr-2 mb-6 cursor-pointer text-[#1686C1] hover:text-blue-900 `}
+						>
+							{data.name}
+						</div>
 					</Link>
 				))}
 			</div>
@@ -87,5 +91,10 @@ export const DesktopNavV2 = [
 		id: 5,
 		name: 'Donate',
 		route: '#',
+	},
+	{
+		id: 5,
+		name: 'Food Operator Login',
+		route: '/login',
 	},
 ];
