@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardSideBar from '../components/DashboardSideBar/DashboardSideBar';
 import DashboardNavBar from '../components/DashboardNavBar/DashboardNavBar';
+import Greetings from '../components/Greetings/Greetings';
 
 interface DashboardLayoutProps {
 	children: React.ReactNode;
@@ -16,7 +17,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = async ({
 			</div>
 			<div className='flex-1 overflow-y-auto h-[64rem]'>
 				<div className='w-full p-6'>
-					<DashboardNavBar />
+					{/* <DashboardNavBar /> */}
+					<Greetings />
 				</div>
 				<div className='p-6'>{children}</div>
 			</div>

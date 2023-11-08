@@ -11,6 +11,7 @@ import {
 	MdEmojiEvents,
 	MdOutlineVolunteerActivism,
 } from 'react-icons/md';
+import { AiOutlineHome } from 'react-icons/ai';
 
 const DashboardSideBar = () => {
 	const pathname = usePathname();
@@ -19,18 +20,24 @@ const DashboardSideBar = () => {
 	const navBarData = [
 		{
 			id: 1,
+			icon: <AiOutlineHome />,
+			name: 'Home',
+			route: '/dashboard',
+		},
+		{
+			id: 2,
 			icon: <MdOutlineInventory />,
 			name: 'Food Inventory',
 			route: '/dashboard/food-inventory',
 		},
 		{
-			id: 2,
+			id: 3,
 			icon: <MdEmojiEvents />,
 			name: 'Events',
 			route: '/dashboard/events',
 		},
 		{
-			id: 3,
+			id: 4,
 			icon: <MdOutlineVolunteerActivism />,
 			name: 'Volunteers',
 			route: '/dashboard/volunteers',
@@ -45,10 +52,10 @@ const DashboardSideBar = () => {
 			<div className='pt-[5.5rem]'>
 				{navBarData.map(data => (
 					<Link
-						className={`flex items-center mb-6 py-3 rounded-lg hover:text-feed-blue ${
+						className={`flex items-center mb-6 py-3 rounded-lg  ${
 							pathname === data.route
-								? 'bg-blue-500 text-career-blue-800'
-								: 'text-gray-400'
+								? 'bg-blue-500 text-white px-4'
+								: 'text-gray-400 hover:text-feed-blue'
 						}`}
 						href={data.route}
 						key={data.id}
