@@ -90,7 +90,7 @@ export const DesktopNavV2 = [
 	{
 		id: 5,
 		name: 'Donate',
-		route: '#',
+		route: '/donate',
 	},
 	{
 		id: 5,
