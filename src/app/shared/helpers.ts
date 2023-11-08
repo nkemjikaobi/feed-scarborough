@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 /**
  * Button properties for the custom button
  */
@@ -71,11 +73,23 @@ export const errorMessages = {
  * @return {String} Combined classes
  */
 export const composeClasses = (...styles: any[]): string => {
-  let classes = ''
+	let classes = '';
 
-  styles.forEach((arg) => {
-    if (arg) classes += `${arg} `
-  })
+	styles.forEach(arg => {
+		if (arg) classes += `${arg} `;
+	});
 
-  return classes.trim()
-}
+	return classes.trim();
+};
+
+export const changeDateFormat = (
+	date: string | Date | undefined,
+	timeFormat: string,
+	fromNow?: boolean
+) => {
+	if (date && fromNow) {
+		return moment(date).format(timeFormat);
+	} else {
+		return moment(date).format(timeFormat);
+	}
+};

@@ -234,7 +234,7 @@ export default function FindFoodBank() {
 							value={searchText}
 							onChange={e => setSearchText(e.target.value)}
 							className='w-[90%] smallLaptop:w-full px-4 py-2 border rounded-lg smallLaptop:pl-10 smallLaptop:h-16 focus:outline-none focus:border-[#1686C1]'
-							placeholder='Enter your address or postal code'
+							placeholder='Enter your address, postal code or food item'
 						/>
 					</div>
 

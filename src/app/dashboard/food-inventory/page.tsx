@@ -5,7 +5,7 @@ import CustomModal from '@/app/components/atoms/CustomModal/CustomModal';
 import EnhancedTable from '@/app/components/atoms/CustomTable';
 import FormikCustomInput from '@/app/components/atoms/FormikCustomInput/FormikCustomInput';
 import FormikCustomSelect from '@/app/components/atoms/FormikCustomSelect/FormikCustomSelect';
-import { ButtonProperties, errorMessages } from '@/app/shared/helpers';
+import { ButtonProperties, changeDateFormat, errorMessages } from '@/app/shared/helpers';
 import { Form, Formik, FormikProps } from 'formik';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -14,11 +14,13 @@ import { AiOutlineClose } from 'react-icons/ai';
 import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function FoodInventory() {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [showInventoryModal, setShowInventoryModal] = useState<boolean>(false);
-	const [showUpdateInventoryModal, setShowUpdateInventoryModal] = useState<boolean>(false);
+	const [showUpdateInventoryModal, setShowUpdateInventoryModal] =
+		useState<boolean>(false);
 	const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
 	const [departureDate, setDepartureDate] = useState<Date | undefined>();
 
@@ -375,12 +377,21 @@ export default function FoodInventory() {
 		},
 	];
 
+	const [data, setData] = useState<any>(inventoryData);
+
 	const initialState = {
 		name: '',
 		quantity: '',
 		unit: '',
 		category: '',
 		expiry: '',
+	};
+
+	const filterPassedTime = (time: any) => {
+		const currentDate = new Date();
+		const selectedDate = new Date(time);
+
+		return currentDate.getTime() < selectedDate.getTime();
 	};
 
 	interface Values {
@@ -401,6 +412,33 @@ export default function FoodInventory() {
 
 	const handleSubmit = async (values: Values) => {
 		setShowInventoryModal(false);
+		console.log(values)
+		setData([
+			{
+				...values,
+				id: data.length + 1,
+				expiry: changeDateFormat(departureDate, 'MMMM Do YYYY, h:mm:ss a'),
+				actions: (
+					<div className='flex items-center space-x-4'>
+						<AiFillEdit
+							className='cursor-pointer text-20 text-feed-blue'
+							onClick={(e: any) => {
+								e.stopPropagation();
+								setShowUpdateInventoryModal(true);
+							}}
+						/>
+						<AiFillDelete
+							className='text-20 text-red-500 cursor-pointer'
+							onClick={(e: any) => {
+								e.stopPropagation();
+								setShowDeleteModal(true);
+							}}
+						/>
+					</div>
+				),
+			},
+			...data,
+		]);
 		toast.success('Inventory Added');
 	};
 
@@ -421,11 +459,11 @@ export default function FoodInventory() {
 					minWidth={1000}
 					loading={loading}
 					headers={inventoryColums}
-					rows={inventoryData}
+					rows={data}
 					options={{
 						toolbar: true,
 						rowsPerPage: [5, 10, 25, 50],
-						defaultOrder: 'asc',
+						defaultOrder: 'desc',
 					}}
 					allHeadersStyles={{
 						color: '#475467',
@@ -554,12 +592,14 @@ export default function FoodInventory() {
 														type='text'
 													/>
 												}
-												dateFormat='yyyy-MM-dd'
 												minDate={new Date()}
 												name='expiry'
 												onChange={(date: Date) => setDepartureDate(date)}
 												placeholderText={'Select expiry Date of item'}
 												selected={departureDate}
+												showTimeSelect
+												filterTime={filterPassedTime}
+												dateFormat='MMMM d, yyyy h:mm aa'
 											/>
 										</div>
 									</div>

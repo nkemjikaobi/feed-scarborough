@@ -13,6 +13,7 @@ import { IoMdCall } from 'react-icons/io';
 import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Volunteers() {
 	const [loading, setLoading] = useState<boolean>(true);
@@ -378,6 +379,8 @@ export default function Volunteers() {
 		},
 	];
 
+	const [data, setData] = useState<any>(volunteerData);
+
 	const initialState = {
 		name: '',
 		email: '',
@@ -401,6 +404,36 @@ export default function Volunteers() {
 
 	const handleSubmit = async (values: Values) => {
 		setShowVolunteersModal(false);
+		setData([
+			{
+				...values,
+				id: data.length + 1,
+				actions: (
+					<div className='flex items-center space-x-4'>
+						<AiOutlineMail
+							className='text-20 text-feed-bluen cursor-pointer'
+							onClick={(e: any) => {
+								e.stopPropagation();
+							}}
+						/>
+						<IoMdCall
+							className='text-20 text-feed-blue cursor-pointer'
+							onClick={(e: any) => {
+								e.stopPropagation();
+							}}
+						/>
+						<AiFillDelete
+							className='text-20 text-red-500 cursor-pointer'
+							onClick={(e: any) => {
+								e.stopPropagation();
+								setShowDeleteModal(true);
+							}}
+						/>
+					</div>
+				),
+			},
+			...data,
+		]);
 		toast.success('Volunteer Added');
 	};
 
@@ -421,11 +454,11 @@ export default function Volunteers() {
 					minWidth={1000}
 					loading={loading}
 					headers={volunteerColums}
-					rows={volunteerData}
+					rows={data}
 					options={{
 						toolbar: true,
 						rowsPerPage: [5, 10, 25, 50],
-						defaultOrder: 'asc',
+						defaultOrder: 'desc',
 					}}
 					allHeadersStyles={{
 						color: '#475467',

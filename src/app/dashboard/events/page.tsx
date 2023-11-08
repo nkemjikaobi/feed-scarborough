@@ -4,7 +4,11 @@ import CustomButton from '@/app/components/atoms/CustomButton/CustomButton';
 import CustomModal from '@/app/components/atoms/CustomModal/CustomModal';
 import EnhancedTable from '@/app/components/atoms/CustomTable';
 import FormikCustomInput from '@/app/components/atoms/FormikCustomInput/FormikCustomInput';
-import { ButtonProperties, errorMessages } from '@/app/shared/helpers';
+import {
+	ButtonProperties,
+	changeDateFormat,
+	errorMessages,
+} from '@/app/shared/helpers';
 import { Form, Formik, FormikProps } from 'formik';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -12,6 +16,7 @@ import { AiFillDelete, AiFillEdit, AiOutlineClose } from 'react-icons/ai';
 import * as yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Events() {
 	const [loading, setLoading] = useState<boolean>(true);
@@ -362,6 +367,8 @@ export default function Events() {
 		},
 	];
 
+	const [data, setData] = useState<any>(eventData);
+
 	const initialState = {
 		name: '',
 		description: '',
@@ -383,8 +390,43 @@ export default function Events() {
 		end_time: yup.string(),
 	});
 
+	const filterPassedTime = (time: any) => {
+		const currentDate = new Date();
+		const selectedDate = new Date(time);
+
+		return currentDate.getTime() < selectedDate.getTime();
+	};
+
 	const handleSubmit = async (values: Values) => {
 		setShowEventsModal(false);
+
+		setData([
+			{
+				...values,
+				id: data.length + 1,
+				start_time: changeDateFormat(startTime, 'MMMM Do YYYY, h:mm:ss a'),
+				end_time: changeDateFormat(endTime, 'MMMM Do YYYY, h:mm:ss a'),
+				actions: (
+					<div className='flex items-center space-x-4'>
+						<AiFillEdit
+							className='text-20 text-feed-blue cursor-pointer'
+							onClick={(e: any) => {
+								e.stopPropagation();
+								setShowUpdateEventsModal(true);
+							}}
+						/>
+						<AiFillDelete
+							className='cursor-pointer text-20 text-red-500'
+							onClick={(e: any) => {
+								e.stopPropagation();
+								setShowDeleteModal(true);
+							}}
+						/>
+					</div>
+				),
+			},
+			...data,
+		]);
 		toast.success('Event Added');
 	};
 
@@ -405,11 +447,11 @@ export default function Events() {
 					minWidth={1000}
 					loading={loading}
 					headers={eventColumns}
-					rows={eventData}
+					rows={data}
 					options={{
 						toolbar: true,
 						rowsPerPage: [5, 10, 25, 50],
-						defaultOrder: 'asc',
+						defaultOrder: 'desc',
 					}}
 					allHeadersStyles={{
 						color: '#475467',
@@ -489,12 +531,15 @@ export default function Events() {
 														type='text'
 													/>
 												}
-												dateFormat='yyyy-MM-dd'
 												minDate={new Date()}
 												name='start_time'
 												onChange={(date: Date) => setStartTime(date)}
 												placeholderText={'Select start date of event'}
 												selected={startTime}
+												className='w-full'
+												showTimeSelect
+												filterTime={filterPassedTime}
+												dateFormat='MMMM d, yyyy h:mm aa'
 											/>
 										</div>
 									</div>
@@ -511,12 +556,15 @@ export default function Events() {
 														type='text'
 													/>
 												}
-												dateFormat='yyyy-MM-dd'
 												minDate={new Date()}
 												name='end_time'
 												onChange={(date: Date) => setEndTime(date)}
 												placeholderText={'Select end date of event'}
 												selected={endTime}
+												className='w-full'
+												showTimeSelect
+												filterTime={filterPassedTime}
+												dateFormat='MMMM d, yyyy h:mm aa'
 											/>
 										</div>
 									</div>

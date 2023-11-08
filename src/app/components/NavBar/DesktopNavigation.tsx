@@ -3,7 +3,7 @@ import useClickOutside from '@/app/hooks/useClickOutside';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { DesktopNavV2 } from './MobileNavigation';
 import CustomButton from '../atoms/CustomButton/CustomButton';
