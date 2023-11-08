@@ -80,7 +80,7 @@ export const DesktopNavV2 = [
 	{
 		id: 3,
 		name: 'Events & Calendars',
-		route: '#',
+		route: '/events',
 	},
 	{
 		id: 4,

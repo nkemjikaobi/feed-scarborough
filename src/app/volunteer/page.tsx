@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 yupPassword(yup); // extend yup
 
-export default function Login() {
+export default function Volunteers() {
 	const [loading, setLoading] = useState<boolean>(false);
 	const router = useRouter();
 
