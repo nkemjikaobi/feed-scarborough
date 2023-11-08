@@ -536,23 +536,23 @@ export default function FoodInventory() {
 					<div className='grid grid-cols-2 smallLaptop:grid-cols-4 bigLaptop:grid-cols-6'>
 						<div>
 							<h4 className='mb-2 font-medium'>Rice</h4>
-							<QRCodeCanvas value='https://feed-scarborough-knjor6axv-nkemjikaobi.vercel.app/dashboard/food-inventory?item=rice' />
+							<QRCodeCanvas value='https://feed-scarborough.vercel.app/dashboard/food-inventory?item=rice' />
 						</div>
 						<div>
 							<h4 className='mb-2 font-medium'>Noodles</h4>
-							<QRCodeCanvas value='https://feed-scarborough-knjor6axv-nkemjikaobi.vercel.app/dashboard/food-inventory?item=noodles' />
+							<QRCodeCanvas value='https://feed-scarborough.vercel.app/dashboard/food-inventory?item=noodles' />
 						</div>
 						<div>
 							<h4 className='mb-2 font-medium'>Onions</h4>
-							<QRCodeCanvas value='https://feed-scarborough-knjor6axv-nkemjikaobi.vercel.app/dashboard/food-inventory?item=onions' />
+							<QRCodeCanvas value='https://feed-scarborough.vercel.app/dashboard/food-inventory?item=onions' />
 						</div>
 						<div>
 							<h4 className='mb-2 font-medium'>Yoghurt</h4>
-							<QRCodeCanvas value='https://feed-scarborough-knjor6axv-nkemjikaobi.vercel.app/dashboard/food-inventory?item=yoghurt' />
+							<QRCodeCanvas value='https://feed-scarborough.vercel.app/dashboard/food-inventory?item=yoghurt' />
 						</div>
 						<div>
 							<h4 className='mb-2 font-medium'>Chicken</h4>
-							<QRCodeCanvas value='https://feed-scarborough-knjor6axv-nkemjikaobi.vercel.app/dashboard/food-inventory?item=chicken' />
+							<QRCodeCanvas value='https://feed-scarborough.vercel.app/dashboard/food-inventory?item=chicken' />
 						</div>
 					</div>
 				</div>
