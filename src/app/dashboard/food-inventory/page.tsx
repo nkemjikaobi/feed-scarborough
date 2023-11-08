@@ -473,8 +473,8 @@ export default function FoodInventory() {
 												container='tablet:px-6'
 												inputClassName='placeholder:text-14 placeholder:text-jobanaut-ink-blue-500 border-black'
 												name='name'
-												placeholder='Enter Your Email Address'
-												type='email'
+												placeholder='Enter the item name'
+												type='text'
 											/>
 										</div>
 									</div>
