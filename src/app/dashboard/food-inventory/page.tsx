@@ -48,7 +48,7 @@ export default function FoodInventory() {
 		//eslint-disable-next-line
 	}, [itemName]);
 
-	const inventoryColums = [
+	const inventoryColums: any = [
 		{
 			id: 11,
 			field: 'id',
@@ -429,37 +429,39 @@ export default function FoodInventory() {
 	});
 
 	const autoAddFoodToInventory = () => {
-		setData([
-			{
-				id: data.length + 1,
-				name: itemName,
-				expiry: changeDateFormat(new Date(), 'MMMM Do YYYY, h:mm:ss a'),
-				quantity: 1,
-				category: 'veggies',
-				unit: 'aisle-25',
-				actions: (
-					<div className='flex items-center space-x-4'>
-						<AiFillEdit
-							className='cursor-pointer text-20 text-feed-blue'
-							onClick={(e: any) => {
-								e.stopPropagation();
-								setShowUpdateInventoryModal(true);
-							}}
-						/>
-						<AiFillDelete
-							className='text-20 text-red-500 cursor-pointer'
-							onClick={(e: any) => {
-								e.stopPropagation();
-								setShowDeleteModal(true);
-							}}
-						/>
-					</div>
-				),
-			},
-			...data,
-		]);
-		router.push('/dashboard/food-inventory');
-		toast.success(`${itemName} has been added to the inventory`);
+		if (itemName) {
+			setData([
+				{
+					id: data.length + 1,
+					name: itemName,
+					expiry: changeDateFormat(new Date(), 'MMMM Do YYYY, h:mm:ss a'),
+					quantity: 1,
+					category: 'veggies',
+					unit: 'aisle-25',
+					actions: (
+						<div className='flex items-center space-x-4'>
+							<AiFillEdit
+								className='cursor-pointer text-20 text-feed-blue'
+								onClick={(e: any) => {
+									e.stopPropagation();
+									setShowUpdateInventoryModal(true);
+								}}
+							/>
+							<AiFillDelete
+								className='text-20 text-red-500 cursor-pointer'
+								onClick={(e: any) => {
+									e.stopPropagation();
+									setShowDeleteModal(true);
+								}}
+							/>
+						</div>
+					),
+				},
+				...data,
+			]);
+			router.push('/dashboard/food-inventory');
+			toast.success(`${itemName} has been added to the inventory`);
+		}
 	};
 
 	const handleSubmit = async (values: Values) => {

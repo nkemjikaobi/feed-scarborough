@@ -32,7 +32,7 @@ export default function Events() {
 			setLoading(false);
 		}, 3000);
 	}, []);
-	const eventColumns = [
+	const eventColumns: any = [
 		{
 			id: 11,
 			field: 'id',

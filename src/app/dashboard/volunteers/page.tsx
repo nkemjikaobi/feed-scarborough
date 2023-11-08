@@ -26,7 +26,7 @@ export default function Volunteers() {
 			setLoading(false);
 		}, 3000);
 	}, []);
-	const volunteerColums = [
+	const volunteerColums: any = [
 		{
 			id: 11,
 			field: 'id',
