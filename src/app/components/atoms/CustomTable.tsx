@@ -86,15 +86,15 @@ function stableSort<T>(
 	array: any,
 	comparator: (a: T, b: T) => number
 ) {
-	const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-	stabilizedThis.sort((a, b) => {
+	const stabilizedThis = array.map((el: any, index: any) => [el, index] as [T, number]);
+	stabilizedThis.sort((a: any, b: any) => {
 		const order = comparator(a[0], b[0]);
 		if (order !== 0) {
 			return order;
 		}
 		return a[1] - b[1];
 	});
-	return stabilizedThis.map(el => el[0]);
+	return stabilizedThis.map((el: any) => el[0]);
 }
 
 interface EnhancedTableHeaderProps<
@@ -501,11 +501,11 @@ const EnhancedTable = <
 	};
 
 	const renderField = <T extends A & ColumnField<T>>(
-		row: B,
-		col: T,
-		editable: EnhancedTableColumnEditableProps<B>[] | undefined
+		row: any,
+		col: any,
+		editable: any
 	) => {
-		const editableField = editable && editable.find(e => e.field === col.field);
+		const editableField = editable && editable.find((e: any) => e.field === col.field);
 
 		if (!editableField) {
 			if (typeof col.value === 'number' || typeof col.value === 'string')
@@ -620,7 +620,7 @@ const EnhancedTable = <
 								allHeadersStyles={allHeadersStyles}
 							/>
 							<TableBody>
-								{visibleRows.map((row, index) => {
+								{visibleRows.map((row: any, index: any) => {
 									const isItemSelected = isSelected(String(row.uuid));
 									const labelId = `enhanced-table-checkbox-${row.uuid}`;
 
@@ -698,7 +698,7 @@ const EnhancedTable = <
 														...col.fieldStyles,
 													}}
 												>
-													{renderField<typeof col.value>(row, col, editable)}
+													{renderField(row, col, editable)}
 												</TableCell>
 											))}
 										</TableRow>
