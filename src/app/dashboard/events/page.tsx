@@ -110,14 +110,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -136,14 +136,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -162,14 +162,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -188,14 +188,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -214,14 +214,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -240,14 +240,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -266,14 +266,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -292,14 +292,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -318,14 +318,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
@@ -344,14 +344,14 @@ export default function Events() {
 			actions: (
 				<div className='flex items-center space-x-4'>
 					<AiFillEdit
-						className='text-20 text-feed-blue'
+						className='text-20 text-feed-blue cursor-pointer'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowUpdateEventsModal(true);
 						}}
 					/>
 					<AiFillDelete
-						className='text-20 text-red-500'
+						className='cursor-pointer text-20 text-red-500'
 						onClick={(e: any) => {
 							e.stopPropagation();
 							setShowDeleteModal(true);
